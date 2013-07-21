@@ -25,7 +25,8 @@ angular.module('angellistApp')
         if response.status == 401
           deferred = $q.defer()
           scope.$broadcast 'event:unauthorized'
-          deferred.promise
+          return deferred.promise
+
         $q.reject response
 
       (promise) ->
