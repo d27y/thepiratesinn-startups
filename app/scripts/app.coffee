@@ -24,11 +24,19 @@ angular.module('angellistApp', ["searchService", "auth", "configuration"])
         redirectTo: '/'
 
   .run ['$rootScope', '$window', 'API', 'HOST', (scope, $window, API, HOST) ->
+    api_url = (url) ->
+      "http://#{API}#{url}?redirect=http://#{HOST}"
+
     # authenticate with api
     scope.$on 'event:authenticate', (event) ->
-      auth_host = API
-      this_host = HOST
-      auth_url = "http://#{auth_host}/auth/angellist?redirect=http://#{this_host}"
+      $window.location.assign(api_url "/auth/angellist")
 
-      $window.location.assign auth_url
-    ]
+    scope.$on 'event:logout', (event) ->
+      $window.location.assign(api_url "/logout")
+
+    scope.$on 'event:unauthorized', (event) ->
+      scope.loggedIn = false
+
+    scope.$on 'event:authorized', (event) ->
+      scope.loggedIn = true
+  ]

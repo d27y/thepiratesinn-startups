@@ -2,12 +2,9 @@
 
 body {
   font-family: 'Dosis', sans-serif;
+  padding-top: 60px; /* When using the navbar-top-fixed */
 }
-
-h1 {
-  font-family: 'Julius Sans One', sans-serif;
-}
-.page-header p {
+a.brand {
   font-family: 'Julius Sans One', sans-serif;
 }
 

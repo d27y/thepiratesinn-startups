@@ -30,8 +30,24 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <angellist-login></angellist-login>
+    <login></login>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">AngelList Cologne!</a>
+
+          <account></account>
+        </div>
+      </div>
+    </div>
+
     <div class="container" ng-view=""></div>
+
+    <footer>
+      <div class="container">
+        &copy; Copyright by DMT Holding GmbH
+      </div>
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -68,6 +84,8 @@
 
         <!-- build:js scripts/modules.js -->
         <script src="bower_components/angular-resource-unstable/angular-resource.js"></script>
+        <script src="scripts/services/accountService.js"></script>
+        <script src="scripts/directives/account.js"></script>
         <!-- endbuild -->
 </body>
 </html>

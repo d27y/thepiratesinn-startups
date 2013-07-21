@@ -1,5 +1,5 @@
 angular.module('auth', [])
-  .directive 'angellistLogin', () ->
+  .directive 'login', () ->
     # display login form
     restrict: 'E'
     templateUrl: 'views/login.html'
@@ -18,12 +18,20 @@ angular.module('auth', [])
 
   .config ($httpProvider) ->
     # handle unauthorized responses from our api
+    authorized = false
+
     interceptor = ['$rootScope', '$q', (scope, $q) ->
+      is_api = (response) ->
+        response.config.url.match(/http/)
+
       success = (response) ->
+        if is_api(response) and not authorized
+          authorized = true
+          scope.$broadcast 'event:authorized'
         response
 
       error = (response) ->
-        if response.status == 401
+        if is_api(response) and response.status == 401
           deferred = $q.defer()
           scope.$broadcast 'event:unauthorized'
           return deferred.promise
@@ -34,5 +42,3 @@ angular.module('auth', [])
         promise.then success, error
     ]
     $httpProvider.responseInterceptors.push interceptor
-
-
