@@ -1,4 +1,4 @@
-angular.module('angellistApp')
+angular.module('auth', [])
   .directive 'angellistLogin', () ->
     # display login form
     restrict: 'E'
@@ -16,6 +16,7 @@ angular.module('angellistApp')
     $httpProvider.defaults.withCredentials = true
     delete $httpProvider.defaults.headers.common['X-Requested-With']
 
+  .config ($httpProvider) ->
     # handle unauthorized responses from our api
     interceptor = ['$rootScope', '$q', (scope, $q) ->
       success = (response) ->
@@ -34,12 +35,4 @@ angular.module('angellistApp')
     ]
     $httpProvider.responseInterceptors.push interceptor
 
-  .run ['$rootScope', '$http', '$window', (scope, $http, $window) ->
-    # authenticate with api
-    scope.$on 'event:authenticate', (event) ->
-      auth_host = 'angellist.magnetar.lxc:3000'
-      this_host = 'angellist.magnetar.lxc:9000'
-      auth_url = "http://#{auth_host}/auth/angellist?redirect=http://#{this_host}"
 
-      $window.location.assign auth_url
-  ]
