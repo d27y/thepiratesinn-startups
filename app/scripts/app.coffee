@@ -12,3 +12,4 @@ angular.module('angellistApp', ["searchService"])
         controller: 'MainCtrl'
       .otherwise
         redirectTo: '/'
+

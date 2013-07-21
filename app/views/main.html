@@ -1,11 +1,16 @@
-<div class="hero-unit">
-  <h1>Angellist Cologne!</h1>
-  <p>Found on Angellist</p>
-  <ul>
-      <li ng-repeat="entry in search">
-        <img src="{{entry.pic}}"/>
-        <b>{{entry.name}}</b>
-      </li>
+<div class="page-header">
+  <h1>AngelList Cologne!</h1>
+  <p>All you wanna know about cologne</p>
+</div>
+
+<div class="span12">
+  <ul class="thumbnails">
+    <li class="span4" ng-repeat="entry in search | filter:{type:'User'}">
+      <a href="{{entry.url}}">
+        <img ng-src="{{entry.pic}}"/>
+        <h3>{{entry.name}}</h3>
+      </a>
+    </li>
+    <li ng-show="!search.length">No entries</li>
   </ul>
-  <h3>Enjoy funding!</h3>
 </div>

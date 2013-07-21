@@ -2,8 +2,5 @@
 
 angular.module('angellistApp')
   .controller 'MainCtrl', ($scope, Search) ->
-
     $scope.search = Search.query {q: "cologne"}, () ->
-
-      console.log arguments
 
