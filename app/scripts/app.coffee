@@ -1,6 +1,10 @@
 'use strict'
 
-angular.module('angellistApp', [])
+angular.module('searchService', ['ngResource']).
+  factory 'Search', ($resource) ->
+    $resource 'http://angellist.magnetar.lxc\\:3000/api/1/search/:id', id: "@_id"
+
+angular.module('angellistApp', ["searchService"])
   .config ($routeProvider) ->
     $routeProvider
       .when '/',

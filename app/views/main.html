@@ -1,9 +1,11 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
+  <h1>Angellist Cologne!</h1>
+  <p>Found on Angellist</p>
   <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+      <li ng-repeat="entry in search">
+        <img src="{{entry.pic}}"/>
+        <b>{{entry.name}}</b>
+      </li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+  <h3>Enjoy funding!</h3>
 </div>

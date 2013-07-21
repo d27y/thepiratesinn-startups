@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('angellistApp')
-  .controller 'MainCtrl', ($scope) ->
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ]
+  .controller 'MainCtrl', ($scope, Search) ->
+
+    $scope.search = Search.query {q: "cologne"}, () ->
+
+      console.log arguments
+
