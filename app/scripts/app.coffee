@@ -3,7 +3,7 @@
 if window.location.host.match /angellist\.magnetar\.lxc.*/
   api_host = "angellist.magnetar.lxc:3000"
 else
-  api_host = "angellist-dmt-api.herokuapp.com"
+  api_host = "startups-cologne-api.herokuapp.com"
 
 angular.module('configuration', [])
   .value("API", api_host)
@@ -14,7 +14,7 @@ angular.module('searchService', ['ngResource', 'configuration']).
     api_host = API.replace /:/, "\\:"
     $resource "http://#{api_host}/api/1/search/:id", id: "@_id"
 
-angular.module('angellistApp', ["searchService", "auth", "configuration"])
+angular.module('startupsCologneApp', ["searchService", "auth", "configuration"])
   .config ($routeProvider) ->
     $routeProvider
       .when '/',

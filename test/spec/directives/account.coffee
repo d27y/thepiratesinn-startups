@@ -1,7 +1,7 @@
 'use strict'
 
 describe 'Directive: account', () ->
-  beforeEach module 'angellistApp'
+  beforeEach module 'startupsCologneApp'
 
   element = {}
 

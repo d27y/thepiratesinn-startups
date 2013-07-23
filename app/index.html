@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 </head>
-  <body ng-app="angellistApp">
+  <body ng-app="startupCologneApp">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -34,7 +34,7 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">AngelList Cologne!</a>
+          <a class="brand" href="#">Startups Cologne!</a>
 
           <account></account>
         </div>
@@ -63,6 +63,8 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/auth.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/accountService.js"></script>
+    <script src="scripts/directives/account.js"></script>
     <!-- endbuild -->
 
         <!-- build:js scripts/plugins.js -->
@@ -84,8 +86,6 @@
 
         <!-- build:js scripts/modules.js -->
         <script src="bower_components/angular-resource-unstable/angular-resource.js"></script>
-        <script src="scripts/services/accountService.js"></script>
-        <script src="scripts/directives/account.js"></script>
         <!-- endbuild -->
 </body>
 </html>

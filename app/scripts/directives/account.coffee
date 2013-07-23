@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angellistApp')
+angular.module('startupsCologneApp')
   .directive('account', () ->
     # display login form
     restrict: 'E'
