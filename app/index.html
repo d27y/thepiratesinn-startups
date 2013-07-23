@@ -36,6 +36,11 @@
         <div class="container">
           <a class="brand" href="#">Startups Cologne!</a>
 
+          <ul class="nav">
+            <li ng-class="navBar('/')"><a href="/">Startups</a></li>
+            <li ng-class="navBar('/users')"><a href="/users">Users</a></li>
+            <li ng-class="navBar('/jobs')"><a href="/jobs">Jobs</a></li>
+          </ul>
           <account></account>
         </div>
       </div>
@@ -65,6 +70,8 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/services/accountService.js"></script>
     <script src="scripts/directives/account.js"></script>
+    <script src="scripts/controllers/users.js"></script>
+    <script src="scripts/controllers/jobs.js"></script>
     <!-- endbuild -->
 
         <!-- build:js scripts/plugins.js -->
@@ -86,6 +93,9 @@
 
         <!-- build:js scripts/modules.js -->
         <script src="bower_components/angular-resource-unstable/angular-resource.js"></script>
+        <script src="scripts/services/startups.js"></script>
+        <script src="scripts/services/users.js"></script>
+        <script src="scripts/services/jobs.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -9,17 +9,19 @@ angular.module('configuration', [])
   .value("API", api_host)
   .value("HOST", window.location.host)
 
-angular.module('searchService', ['ngResource', 'configuration']).
-  factory 'Search', ($resource, API) ->
-    api_host = API.replace /:/, "\\:"
-    $resource "http://#{api_host}/api/1/search/:id", id: "@_id"
-
-angular.module('startupsCologneApp', ["searchService", "auth", "configuration"])
-  .config ($routeProvider) ->
+angular.module('startupsCologneApp', ["ngResource", "auth", "configuration"])
+  .config ($routeProvider, $locationProvider) ->
+    $locationProvider.html5Mode true
     $routeProvider
       .when '/',
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
+      .when '/users',
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl'
+      .when '/jobs',
+        templateUrl: 'views/jobs.html',
+        controller: 'JobsCtrl'
       .otherwise
         redirectTo: '/'
 
@@ -39,4 +41,8 @@ angular.module('startupsCologneApp', ["searchService", "auth", "configuration"])
 
     scope.$on 'event:authorized', (event) ->
       scope.loggedIn = true
+
+    scope.navBar = (url) ->
+      if url is $window.location.pathname
+        "active"
   ]

@@ -1,0 +1,24 @@
+<div class="span12">
+  <ul ng-show="loading==false">
+    <li ng-repeat="entry in (filteredEntries = (jobs | orderBy:'updated_at':true))">
+      <a href="{{entry.angellist_url}}">
+        <h3>{{entry.title}} - {{entry.startup.name}}</h3>
+      </a>
+      <p>Skills:</p>
+      <ul>
+        <li ng-repeat="tag in entry.tags | filter:{tag_type:'SkillTag'}">{{tag.display_name}}</li>
+      </ul>
+      <p>
+        Location:
+        <span ng-repeat="tag in entry.tags | filter:{tag_type:'LocationTag'}">{{tag.display_name}}</span>
+      </p>
+      <p>
+        Role:
+        <span ng-repeat="tag in entry.tags | filter:{tag_type:'RoleTag'}">{{tag.display_name}}</span>
+      </p>
+    </li>
+    <li ng-show="!filteredEntries.length">
+      No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+    </li>
+  </ul>
+</div>

@@ -3,12 +3,13 @@
     <img src="http://upload.wikimedia.org/wikipedia/commons/2/2e/K%C3%B6ln_Panorama.jpg"/>
     <p><small>© Raimond Spekking / CC-BY-SA-3.0 (via Wikimedia Commons) [<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a> or <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="http://commons.wikimedia.org/wiki/File%3AK%C3%B6ln_Panorama.jpg">via Wikimedia Commons</a></small></p>
   </div>
-  <ul class="thumbnails" ng-show="loading==false">
-    <li class="span4" ng-repeat="entry in (filteredEntries = (search | filter:{type:'User'}))">
-      <a href="{{entry.url}}">
-        <img ng-src="{{entry.pic}}"/>
-        <h3 title="{{entry}}">{{entry.name}}</h3>
+  <ul ng-show="loading==false">
+    <li ng-repeat="entry in (filteredEntries = (startups | orderBy:'follower_count':true | filter:{hidden:'false'}))">
+      <a href="{{entry.company_url}}">
+        <h3>{{entry.name}}</h3>
       </a>
+      <p>{{entry.high_concept}}</p>
+      <p>Followers: {{entry.follower_count}}</p>
     </li>
     <li ng-show="!filteredEntries.length">
       No entries found! Please stay calm. We got notified and a drone is already on its way to your house.

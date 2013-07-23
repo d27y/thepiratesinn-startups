@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('startupsCologneApp')
-  .controller 'MainCtrl', ($scope, startups) ->
+  .controller 'UsersCtrl', ($scope, users) ->
     $scope.loading = true
-    $scope.startups = startups.query {}, () ->
+    $scope.users = users.query {}, () ->
       $scope.loading = false
