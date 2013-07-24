@@ -1,6 +1,7 @@
 <div class="span12">
+  <pagination></pagination>
   <ul ng-show="loading==false">
-    <li ng-repeat="entry in (filteredEntries = (jobs | orderBy:'updated_at':true))">
+    <li ng-repeat="entry in (filteredEntries = (jobs.jobs | orderBy:'updated_at':true))">
       <a href="{{entry.angellist_url}}">
         <h3>{{entry.title}} - {{entry.startup.name}}</h3>
       </a> 
@@ -22,4 +23,5 @@
       No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
     </li>
   </ul>
+  <pagination></pagination>
 </div>

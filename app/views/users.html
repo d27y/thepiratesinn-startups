@@ -1,6 +1,7 @@
 <div class="span12">
+  <pagination></pagination>
   <ul class="thumbnails" ng-show="loading==false">
-    <li class="span4" ng-repeat="entry in (users | orderBy:'name')">
+    <li class="span4" ng-repeat="entry in (users.users | orderBy:'name')">
       <a href="{{entry.angellist_url}}">
         <img ng-src="{{entry.image}}"/>
         <h3>{{entry.name}}</h3>
@@ -13,4 +14,5 @@
       No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
     </li>
   </ul>
+  <pagination></pagination>
 </div>

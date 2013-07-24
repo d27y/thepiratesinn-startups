@@ -1,0 +1,7 @@
+<div class="pagination pagination-right" ng-show="showPagination()">
+  <ul>
+    <li ng-class="prev()"><a ng-click="load(page - 1)">Prev</a></li>
+    <li ng-class="isActive(i)" ng-repeat="i in pages"><a ng-click="load(i)">{{i}}</a></li>
+    <li ng-class="next()"><a ng-click="load(page + 1)">Next</a></li>
+  </ul>
+</div>
