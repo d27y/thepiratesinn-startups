@@ -1,27 +1,25 @@
 <div class="span12">
-  <pagination></pagination>
-  <ul ng-show="loading==false">
-    <li ng-repeat="entry in (filteredEntries = (jobs.jobs | orderBy:'updated_at':true))">
-      <a href="{{entry.angellist_url}}">
-        <h3>{{entry.title}} - {{entry.startup.name}}</h3>
-      </a> 
-      <p>{{entry.startup.product_desc}}</p>
+  <ul class="main-list" ng-show="loading==false">
+    <li ng-repeat="entry in (filteredEntries = (jobs | orderBy:'data.updated_at':true))">
+      <a href="{{entry.data.angellist_url}}">
+        <h3>{{entry.data.title}} - {{entry.data.startup.name}}</h3>
+      </a>
+      <p>{{entry.data.startup.product_desc}}</p>
       <p>
         Skills:
         <ul>
-          <li ng-repeat="tag in entry.tags | filter:{tag_type:'SkillTag'}">{{tag.display_name}}</li>
+          <li ng-repeat="tag in entry.data.tags | filter:{tag_type:'SkillTag'}">{{tag.display_name}}</li>
         </ul>
         Location:
-        <span ng-repeat="tag in entry.tags | filter:{tag_type:'LocationTag'}">{{tag.display_name}}</span>
+        <span ng-repeat="tag in entry.data.tags | filter:{tag_type:'LocationTag'}">{{tag.display_name}}</span>
         <br>
         Role:
-        <span ng-repeat="tag in entry.tags | filter:{tag_type:'RoleTag'}">{{tag.display_name}}</span>
+        <span ng-repeat="tag in entry.data.tags | filter:{tag_type:'RoleTag'}">{{tag.display_name}}</span>
       </p>
-      <small>Created: {{entry.created_at | date:'dd.MM.yyyy'}}</small>
+      <small>Created: {{entry.data.created_at | date:'dd.MM.yyyy'}}</small>
     </li>
     <li ng-show="!filteredEntries.length">
       No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
     </li>
   </ul>
-  <pagination></pagination>
 </div>

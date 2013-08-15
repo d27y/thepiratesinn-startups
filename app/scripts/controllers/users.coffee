@@ -2,16 +2,29 @@
 
 angular.module('startupsCologneApp')
   .controller 'UsersCtrl', ($scope, users) ->
-    $scope.load = (page) ->
-      $scope.loading = true
-      $scope.pages = []
-      $scope.page = 0
-      $scope.last_page = 0
+    $scope.loading = true
 
-      $scope.users = users.query {page: page}, () ->
-        $scope.loading = false
-        $scope.pages = (num for num in [1..$scope.users.last_page])
-        $scope.page = $scope.users.page
-        $scope.last_page = $scope.users.last_page
+    $scope.customFilter = (data) ->
+      (item) ->
+        found = false
+        console.log data?
+        found = true if not data?
 
-    $scope.load 1
+        if data? and item.data.roles?
+          for role in item.data.roles
+            found = true if data.display_name is role.display_name
+
+        found
+
+    $scope.users = users.query () ->
+      $scope.loading = false
+
+      tmp = {}
+      $scope.roles = []
+      for user in $scope.users
+        if user.data.roles?
+          for role in user.data.roles
+            if not tmp[role.id]
+              $scope.roles.push role
+              tmp[role.id] = true
+

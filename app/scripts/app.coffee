@@ -22,6 +22,9 @@ angular.module('startupsCologneApp', ["ngResource", "auth", "configuration"])
       .when '/jobs',
         templateUrl: 'views/jobs.html',
         controller: 'JobsCtrl'
+      .when '/startups',
+        templateUrl: 'views/startups.html',
+        controller: 'StartupsCtrl'
       .otherwise
         redirectTo: '/'
 

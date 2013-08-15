@@ -1,0 +1,14 @@
+<div class="span12">
+  <ul class="main-list" ng-show="loading==false">
+    <li ng-repeat="entry in (filteredEntries = (startups | orderBy:'data.name'))">
+      <a href="{{entry.data.company_url}}">
+        <h3>{{entry.data.name}}</h3>
+      </a>
+      <p>{{entry.data.high_concept}}</p>
+      <p>Followers: {{entry.data.follower_count}}</p>
+    </li>
+    <li ng-show="!filteredEntries.length">
+      No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+    </li>
+  </ul>
+</div>

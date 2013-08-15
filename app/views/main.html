@@ -3,18 +3,33 @@
     <img src="http://upload.wikimedia.org/wikipedia/commons/2/2e/K%C3%B6ln_Panorama.jpg"/>
     <p><small>© Raimond Spekking / CC-BY-SA-3.0 (via Wikimedia Commons) [<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a> or <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="http://commons.wikimedia.org/wiki/File%3AK%C3%B6ln_Panorama.jpg">via Wikimedia Commons</a></small></p>
   </div>
-  <pagination></pagination>
-  <ul ng-show="loading==false">
-    <li ng-repeat="entry in (filteredEntries = (startups.startups | orderBy:'follower_count':true | filter:{hidden:'false'}))">
-      <a href="{{entry.company_url}}">
-        <h3>{{entry.name}}</h3>
-      </a>
-      <p>{{entry.high_concept}}</p>
-      <p>Followers: {{entry.follower_count}}</p>
-    </li>
-    <li ng-show="!filteredEntries.length">
-      No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+  <ul class="main-list" ng-show="loading==false">
+    <li ng-repeat="entry in (filteredEntries = (feeds))">
+      <div ng-switch="entry.type">
+        <em>{{entry.data.created_at | date:"dd.MM.yyyy - HH:mm"}}</em>
+        <div ng-switch-when="status_updates">
+          <h4>{{entry.startup.name}}</h4>
+          <p>{{entry.data.message}}</p>
+        </div>
+        <div ng-switch-when="startups">
+          <h4>New Startup: {{entry.data.name}}</h4>
+          <p>{{entry.data.high_concept}}</p>
+        </div>
+        <div ng-switch-when="press">
+          <h4>{{entry.data.title}}</h4>
+          <h5>{{entry.startup.name}}</h5>
+          <p>
+            {{entry.data.snippet}} 
+            <a href="{{entry.data.url}}">Read more</a>
+          </p>
+        </div>
+        <div ng-switch-when="jobs">
+          <h4>New Job: {{entry.data.title}} at {{entry.data.startup.name}}</h4>
+        </div>
+        <div ng-switch-default="">
+          {{entry}}
+        </div>
+      </div>
     </li>
   </ul>
-  <pagination></pagination>
 </div>

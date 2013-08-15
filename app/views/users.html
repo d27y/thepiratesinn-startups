@@ -1,18 +1,23 @@
 <div class="span12">
-  <pagination></pagination>
-  <ul class="thumbnails" ng-show="loading==false">
-    <li class="span4" ng-repeat="entry in (users.users | orderBy:'name')">
-      <a href="{{entry.angellist_url}}">
-        <img ng-src="{{entry.image}}"/>
-        <h3>{{entry.name}}</h3>
-      </a>
-      <ul>
-        <li ng-repeat="role in entry.roles">{{role.display_name}}</li>
-      </ul>
-    </li>
-    <li ng-show="!users.length">
-      No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
-    </li>
-  </ul>
-  <pagination></pagination>
+  <div ng-show="loading==false">
+    <div class="input-append span12">
+      <form class="form-horizontal">
+        <select ng-model="role" ng-options="role.display_name for role in (roles | orderBy:'display_name')"></select>
+      </form>
+    </div>
+    <ul class="thumbnails">
+      <li class="span4" ng-repeat="entry in (users | orderBy:'data.name' | filter:customFilter(role))">
+        <a href="{{entry.data.angellist_url}}">
+          <img ng-src="{{entry.data.image}}"/>
+          <h3>{{entry.data.name}}</h3>
+        </a>
+        <ul>
+          <li ng-repeat="role in entry.data.roles">{{role.display_name}}</li>
+        </ul>
+      </li>
+      <li ng-show="!users.length">
+        No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+      </li>
+    </ul>
+  </div>
 </div>
