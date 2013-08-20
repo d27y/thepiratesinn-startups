@@ -6,12 +6,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>The Pirates Inn Startups</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="/bower_components/css3-social-signin-buttons/auth-buttons.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext" type="text/css" media="all">
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+English+SC' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -30,23 +31,39 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <login></login>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="/">Startups Cologne!</a>
+          <a class="brand" href="/">The Pirates Inn Startups!</a>
 
           <ul class="nav">
             <li ng-class="navBar('/startups')"><a href="/startups">Startups</a></li>
-            <li ng-class="navBar('/users')"><a href="/users">Users</a></li>
+            <li ng-class="navBar('/users')"><a href="/users">People</a></li>
             <li ng-class="navBar('/jobs')"><a href="/jobs">Jobs</a></li>
           </ul>
-          <account></account>
         </div>
       </div>
     </div>
 
-    <div class="container" ng-view=""></div>
+    <div class="container">
+      <div class="clearfix header">
+        <img class="pull-left" src="images/pirates.png">
+        <div>
+          <h2>Ahoy all ye Startups!</h2>
+          <p>
+            We all love lists, but we here at <a href="http://www.thepiratesinn.com/">The Pirates Inn</a> wanted one for the
+            Cologne Startup Scene that kept updating, automatically. At the same time,
+            many of us were pleading everyone to create an
+            <a href="http://angel.co">Angelist</a> profile, as it is important
+            irrespective of such a list. Now we married both worlds. This page is
+            built on the Angelist API.<br>
+            Now go <a href="https://angel.co/join">register</a>!
+          </p>
+        </div>
+      </div>
+      <div class="span12" ng-view="">
+      </div>
+    </div>
 
     <footer>
       <div class="container">
@@ -100,5 +117,18 @@
         <!-- build:js scripts/modules.js -->
         <script src="bower_components/angular-resource-unstable/angular-resource.js"></script>
         <!-- endbuild -->
+
+    <script>
+      !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+        if(!d.getElementById(id)){
+          js=d.createElement(s);
+          js.id=id;
+          js.src=p+"://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      }(document,"script","twitter-wjs")
+    </script>
+
 </body>
 </html>

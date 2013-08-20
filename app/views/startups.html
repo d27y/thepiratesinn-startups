@@ -1,14 +1,20 @@
-<div class="span12">
-  <ul class="main-list" ng-show="loading==false">
-    <li ng-repeat="entry in (filteredEntries = (startups | orderBy:'data.name'))">
+<ul class="main-list media-list" ng-show="loading==false">
+  <li class="span8 media" ng-repeat="entry in (filteredEntries = (startups | orderBy:'data.name'))">
+    <a class="pull-left" href="{{entry.data.company_url}}">
+      <img class="media-object" src="{{entry.data.thumb_url}}">
+    </a>
+    <div class="media-body">
       <a href="{{entry.data.company_url}}">
-        <h3>{{entry.data.name}}</h3>
+        <h4 class="media-heading">{{entry.data.name}}</h3>
       </a>
       <p>{{entry.data.high_concept}}</p>
-      <p>Followers: {{entry.data.follower_count}}</p>
-    </li>
-    <li ng-show="!filteredEntries.length">
-      No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
-    </li>
-  </ul>
-</div>
+      <ul>
+        <li ng-show="entry.data.twitter_url">Twitter: <a href="{{entry.data.twitter_url}}">{{entry.data.twitter_url}}</a></li>
+        <li>Followers: {{entry.data.follower_count}}</li>
+      </ul>
+    </div>
+  </li>
+  <li ng-show="!filteredEntries.length">
+    No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+  </li>
+</ul>

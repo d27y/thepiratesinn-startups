@@ -1,35 +1,49 @@
-<div class="span12">
-  <div ng-show="loggedIn==false">
-    <img src="http://upload.wikimedia.org/wikipedia/commons/2/2e/K%C3%B6ln_Panorama.jpg"/>
-    <p><small>© Raimond Spekking / CC-BY-SA-3.0 (via Wikimedia Commons) [<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a> or <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="http://commons.wikimedia.org/wiki/File%3AK%C3%B6ln_Panorama.jpg">via Wikimedia Commons</a></small></p>
-  </div>
-  <ul class="main-list" ng-show="loading==false">
-    <li ng-repeat="entry in (filteredEntries = (feeds))">
-      <div ng-switch="entry.type">
-        <em>{{entry.data.created_at | date:"dd.MM.yyyy - HH:mm"}}</em>
-        <div ng-switch-when="status_updates">
-          <h4>{{entry.startup.name}}</h4>
+<ul class="span8 media-list" ng-show="loading==false">
+  <li class="media" ng-repeat="entry in (filteredEntries = (feeds))">
+    <div ng-switch="entry.type">
+      <div ng-switch-when="status_updates">
+        <div class="box">MSG</div>
+        <div class="media-body">
+          <p>
+            <em>{{entry.data.created_at | date:"dd.MM.yyyy - HH:mm"}}</em>
+            by <a href="{{entry.startup.angellist_url}}">{{entry.startup.name}}</a>
+          </p>
           <p>{{entry.data.message}}</p>
         </div>
-        <div ng-switch-when="startups">
-          <h4>New Startup: {{entry.data.name}}</h4>
+      </div>
+      <div ng-switch-when="startups">
+        <div class="box">ARR</div>
+        <div class="media-body">
+          <em>{{entry.data.created_at | date:"dd.MM.yyyy - HH:mm"}}</em>
+          <h4>New Startup: <a href="{{entry.data.angellist_url}}">{{entry.data.name}}</a></h5>
           <p>{{entry.data.high_concept}}</p>
         </div>
-        <div ng-switch-when="press">
+      </div>
+      <div ng-switch-when="press">
+        <div class="box">PR</div>
+        <div class="media-body">
+          <em>{{entry.data.created_at | date:"dd.MM.yyyy - HH:mm"}}</em>
           <h4>{{entry.data.title}}</h4>
-          <h5>{{entry.startup.name}}</h5>
+          <h5><a href="{{entry.startup.angellist_url}}">{{entry.startup.name}}</a></h5>
           <p>
             {{entry.data.snippet}} 
             <a href="{{entry.data.url}}">Read more</a>
           </p>
         </div>
-        <div ng-switch-when="jobs">
+      </div>
+      <div ng-switch-when="jobs">
+        <div class="box">JOB</div>
+        <div class="media-body">
+          <em>{{entry.data.created_at | date:"dd.MM.yyyy - HH:mm"}}</em>
           <h4>New Job: {{entry.data.title}} at {{entry.data.startup.name}}</h4>
         </div>
-        <div ng-switch-default="">
-          {{entry}}
-        </div>
       </div>
-    </li>
-  </ul>
+      <div ng-switch-default="">
+        {{entry}}
+      </div>
+    </div>
+  </li>
+</ul>
+<div class="span4">
+  <a class="twitter-timeline" href="https://twitter.com/ThePiratesInn" data-widget-id="369795207547473920">Tweets by @ThePiratesInn</a>
 </div>

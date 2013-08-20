@@ -1,25 +1,27 @@
-<div class="span12">
-  <ul class="main-list" ng-show="loading==false">
-    <li ng-repeat="entry in (filteredEntries = (jobs | orderBy:'data.updated_at':true))">
+<ul class="main-list media-list" ng-show="loading==false">
+  <li class="span8 media" ng-repeat="entry in (filteredEntries = (jobs | orderBy:'data.updated_at':true))">
+    <a class="pull-left" href="{{entry.data.company_url}}">
+      <img class="media-object" src="{{entry.data.startup.thumb_url}}">
+    </a>
+    <div class="media-body">
+      <em>{{entry.data.created_at | date:"dd.MM.yyyy - HH:mm"}}</em>
       <a href="{{entry.data.angellist_url}}">
-        <h3>{{entry.data.title}} - {{entry.data.startup.name}}</h3>
+        <h4 class="media-heading">{{entry.data.title}} - {{entry.data.startup.name}}</h4>
       </a>
       <p>{{entry.data.startup.product_desc}}</p>
       <p>
         Skills:
-        <ul>
-          <li ng-repeat="tag in entry.data.tags | filter:{tag_type:'SkillTag'}">{{tag.display_name}}</li>
-        </ul>
+        <b><span ng-repeat="tag in entry.data.tags | filter:{tag_type:'SkillTag'}">{{tag.display_name}}{{{true: '', false: ', '}[$last]}}</span></b>
+        <br>
         Location:
-        <span ng-repeat="tag in entry.data.tags | filter:{tag_type:'LocationTag'}">{{tag.display_name}}</span>
+        <b><span ng-repeat="tag in entry.data.tags | filter:{tag_type:'LocationTag'}">{{tag.display_name}}{{{true: '', false: ', '}[$last]}}</span></b>
         <br>
         Role:
-        <span ng-repeat="tag in entry.data.tags | filter:{tag_type:'RoleTag'}">{{tag.display_name}}</span>
+        <b><span ng-repeat="tag in entry.data.tags | filter:{tag_type:'RoleTag'}">{{tag.display_name}}{{{true: '', false: ', '}[$last]}}</span></b>
       </p>
-      <small>Created: {{entry.data.created_at | date:'dd.MM.yyyy'}}</small>
-    </li>
-    <li ng-show="!filteredEntries.length">
-      No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
-    </li>
-  </ul>
-</div>
+    </div>
+  </li>
+  <li ng-show="!filteredEntries.length">
+    No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+  </li>
+</ul>

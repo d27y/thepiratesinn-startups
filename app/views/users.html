@@ -1,23 +1,24 @@
-<div class="span12">
-  <div ng-show="loading==false">
-    <div class="input-append span12">
-      <form class="form-horizontal">
-        <select ng-model="role" ng-options="role.display_name for role in (roles | orderBy:'display_name')"></select>
-      </form>
-    </div>
-    <ul class="thumbnails">
-      <li class="span4" ng-repeat="entry in (users | orderBy:'data.name' | filter:customFilter(role))">
-        <a href="{{entry.data.angellist_url}}">
-          <img ng-src="{{entry.data.image}}"/>
-          <h3>{{entry.data.name}}</h3>
-        </a>
-        <ul>
-          <li ng-repeat="role in entry.data.roles">{{role.display_name}}</li>
-        </ul>
-      </li>
-      <li ng-show="!users.length">
-        No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
-      </li>
-    </ul>
-  </div>
+<div class="input-append span12">
+  <form class="form-horizontal">
+    <label>Select a role:</label>
+    <select ng-model="role" ng-options="role.display_name for role in (roles | orderBy:'display_name')"></select>
+  </form>
 </div>
+
+<ul class="main-list media-list" ng-show="loading==false">
+  <li class="span8 media" ng-repeat="entry in (users | orderBy:'data.name' | filter:customFilter(role))">
+    <a class="pull-left" href="{{entry.data.angellist_url}}">
+      <img class="media-object" src="{{entry.data.image}}">
+    </a>
+    <div class="media-body">
+      <a href="{{entry.data.angellist_url}}">
+        <h4>{{entry.data.name}}</h4>
+      </a>
+      <p>{{entry.data.bio}}</p>
+      <span ng-repeat="role in entry.data.roles">{{role.display_name}}{{{true: '', false: ', '}[$last]}}</span>
+    </div>
+  </li>
+  <li ng-show="!users.length">
+    No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+  </li>
+</ul>
