@@ -3,7 +3,7 @@
 if window.location.host.match /angellist\.magnetar\.lxc.*/
   api_host = "angellist.magnetar.lxc:3000"
 else
-  api_host = "startups-cologne-api.herokuapp.com"
+  api_host = "piratesinn-startups.yggdrasil.teemow.com"
 
 angular.module('configuration', [])
   .value("API", api_host)
