@@ -1,4 +1,6 @@
-<ul class="main-list media-list" ng-show="loading==false">
+<loading></loading>
+
+<ul class="main-list media-list" ng-show="loading==false && failed==false">
   <li class="span8 media" ng-repeat="entry in (filteredEntries = (jobs | orderBy:'data.updated_at':true))">
     <a class="pull-left" href="{{entry.data.company_url}}">
       <img class="media-object" src="{{entry.data.startup.thumb_url}}">

@@ -3,6 +3,7 @@
 angular.module('startupsCologneApp')
   .controller 'UsersCtrl', ($scope, users) ->
     $scope.loading = true
+    $scope.failed = false
 
     $scope.customFilter = (data) ->
       (item) ->
@@ -16,7 +17,7 @@ angular.module('startupsCologneApp')
 
         found
 
-    $scope.users = users.query () ->
+    $scope.users = users.query(->
       $scope.loading = false
 
       tmp = {}
@@ -27,4 +28,8 @@ angular.module('startupsCologneApp')
             if not tmp[role.id]
               $scope.roles.push role
               tmp[role.id] = true
+    , ->
+      $scope.loading = false
+      $scope.failed = true
+    )
 

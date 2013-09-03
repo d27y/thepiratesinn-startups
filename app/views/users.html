@@ -1,11 +1,13 @@
-<div class="input-append span12">
+<loading></loading>
+
+<div class="input-append span12" ng-show="loading==false && failed==false">
   <form class="form-horizontal">
     <label>Select a role:</label>
     <select ng-model="role" ng-options="role.display_name for role in (roles | orderBy:'display_name')"></select>
   </form>
 </div>
 
-<ul class="main-list media-list" ng-show="loading==false">
+<ul class="main-list media-list" ng-show="loading==false && failed==false">
   <li class="span8 media" ng-repeat="entry in (users | orderBy:'data.name' | filter:customFilter(role))">
     <a class="pull-left" href="{{entry.data.angellist_url}}">
       <img class="media-object" src="{{entry.data.image}}">

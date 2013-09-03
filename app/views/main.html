@@ -1,4 +1,6 @@
-<ul class="span8 media-list" ng-show="loading==false">
+<loading></loading>
+
+<ul class="span8 media-list" ng-show="loading==false && failed==false">
   <li class="media" ng-repeat="entry in (filteredEntries = (feeds))">
     <div ng-switch="entry.type">
       <div ng-switch-when="status_updates">
@@ -26,7 +28,7 @@
           <h4>{{entry.data.title}}</h4>
           <h5><a href="{{entry.startup.angellist_url}}">{{entry.startup.name}}</a></h5>
           <p>
-            {{entry.data.snippet}} 
+            {{entry.data.snippet}}
             <a href="{{entry.data.url}}">Read more</a>
           </p>
         </div>
@@ -44,7 +46,7 @@
     </div>
   </li>
   <li ng-show="!filteredEntries.length">
-    No entries found! Please stay calm. We got notified and a drone is already on its way to your house.
+    No entries found! Please stay calm.
   </li>
 </ul>
 <div class="span4">

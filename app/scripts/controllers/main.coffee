@@ -3,18 +3,14 @@
 angular.module('startupsCologneApp')
   .controller 'MainCtrl', ($scope, feeds) ->
     $scope.loading = true
+    $scope.failed = false
 
-    $scope.feeds = feeds.query () ->
+    $.getScript "//platform.twitter.com/widgets.js"
+
+    $scope.feeds = feeds.query(->
       $scope.loading = false
+    , ->
+      $scope.loading = false
+      $scope.failed = true
+    )
 
-      s = "script"
-      id = "twitter-wjs"
-      fjs = document.getElementsByTagName(s)[0]
-      p = if (/^http:/.test(document.location)) then 'http' else 'https'
-
-      if $(id).size() is 0
-        js = document.createElement s
-        js.id = id
-        js.src = "#{p}://platform.twitter.com/widgets.js"
-        fjs.parentNode.insertBefore js, fjs
- 
