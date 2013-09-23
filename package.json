@@ -1,7 +1,13 @@
 {
-  "name": "startups-cologne",
-  "version": "0.0.0",
+  "name": "thepiratesinn-startups",
+  "version": "0.0.1",
   "dependencies": {},
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/d27y/thepiratesinn-startups/blob/master/LICENSE"
+    }
+  ],
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
