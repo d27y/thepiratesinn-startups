@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "dependencies": {
     "statik": "~1.4.1",
-    "connect": "*"
+    "connect": "2.8.4"
   }
 }
